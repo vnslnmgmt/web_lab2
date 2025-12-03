@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вариант 11</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styles */
+        body {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Page Header */
+        .page-header {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 160px;
+            position: absolute;
+            width: 1920px;
+            height: 72px;
+            left: 0;
+            top: 0;
+            border-bottom: 1px solid #EAECF0;
+        }
+
+        .header-brand {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background-color: #0D1421;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.0002 24.9429L19.5891 19.5891L24.9431 16L19.5891 12.4111L16.0002 7.05713L12.4112 12.4111L7.05725 16L12.4112 19.5891L16.0002 24.9429Z' fill='black'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.0002 24.9429L19.5891 19.5891L24.9431 16L19.5891 12.4111L16.0002 7.05713L12.4112 12.4111L7.05725 16L12.4112 19.5891L16.0002 24.9429Z' fill='black'/%3E%3C/svg%3E") no-repeat center;
+        }
+
+        .brand-name {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 32px;
+            color: #354153;
+        }
+        
+        .user-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            background-color: #0D1421;
+             -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+        }
+
+        /* Main Content */
+        .main-content {
+            position: absolute;
+            top: 104px;
+            left: 160px;
+            width: 1600px;
+        }
+
+        .tasks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 10px;
+            position: relative;
+        }
+
+        .tasks-title {
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 40px;
+            color: #0D1421;
+            margin: 0;
+        }
+
+        .filter-button {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 16px;
+            gap: 8px;
+            height: 40px;
+            background: #FFFFFF;
+            border: 1px solid #EAECF0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #354153;
+        }
+        
+        .chevron-down {
+            width: 20px;
+            height: 20px;
+            background-color: #354153;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='black' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='black' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+        }
+
+        /* Tasks Container */
+        .tasks-container {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+        }
+        
+        /* Task Card */
+        .task-card {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            gap: 24px;
+            width: 382px;
+            height: 208px;
+            background: #FFFFFF;
+            border: 1px solid #EAECF0;
+            border-radius: 8px;
+        }
+        
+        .task-color-bar {
+            width: 64px;
+            height: 8px;
+            border-radius: 9999px;
+            flex-shrink: 0;
+        }
+
+        .task-card.blue .task-color-bar { background: #175CD3; }
+        .task-card.green .task-color-bar { background: #049257; }
+        .task-card.red .task-color-bar { background: #D72F21; }
+        .task-card.pink .task-color-bar { background: #CB3798; }
+        
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .task-text-group, .task-details-group {
+             display: flex;
+             flex-direction: column;
+             gap: 8px;
+        }
+
+        .task-card-title {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 32px;
+            color: #0D1421;
+            margin: 0;
+        }
+
+        .task-card-description {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #667085;
+            margin: 0;
+        }
+        
+        .task-detail {
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        
+        .task-detail-label { color: #667085; }
+        .task-detail-value { color: #0D1421; }
+
+        /* Dropdown Menus */
+        .dropdown-list {
+            position: absolute;
+            top: 48px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            z-index: 10;
+            display: none;
+            padding: 6px;
+        }
+
+        .dropdown-list.active { display: flex; }
+
+        .dropdown-sort {
+            flex-direction: column;
+            gap: 4px;
+            width: 230px;
+            left: 0;
+        }
+
+        .dropdown-sort-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 16px;
+            height: 36px;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #354153;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .dropdown-sort-item.active, .dropdown-sort-item:hover {
+            background: #F2F4F7;
+        }
+
+        .dropdown-color {
+            flex-direction: row;
+            gap: 4px;
+            width: 184px;
+            right: 0;
+        }
+
+        .color-checkbox {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .color-checkbox.blue { background: #175CD3; }
+        .color-checkbox.green { background: #049257; }
+        .color-checkbox.red { background: #D72F21; }
+        .color-checkbox.pink { background: #CB3798; }
+
+        .check-icon {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+        }
+        
+        .color-checkbox.checked .check-icon { display: block; }
+        
+        /* Footer */
+        .page-footer {
+            padding: 24px 160px;
+            position: absolute;
+            width: 1920px;
+            left: 0;
+            bottom: 0;
+        }
+
+        .copyright {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #667085;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="header-brand">
+            <div class="logo"></div>
+            <div class="brand-name">Вариант 11</div>
+        </div>
+        <div class="user-icon"></div>
+    </header>
+
+    <main class="main-content">
+        <div class="tasks-header">
+            <h1 class="tasks-title">Ваши задачи</h1>
+            <div class="filters">
+                <button id="sort-button" class="filter-button">
+                    <span id="sort-button-label">По умолчанию</span>
+                    <div class="chevron-down"></div>
+                </button>
+                <button id="color-sort-button" class="filter-button">
+                    <span>Сортировка по цвету</span>
+                    <div class="chevron-down"></div>
+                </button>
+                
+                <div id="sort-dropdown" class="dropdown-list dropdown-sort">
+                    <div class="dropdown-sort-item active">По умолчанию</div>
+                    <div class="dropdown-sort-item">Истекает раньше</div>
+                    <div class="dropdown-sort-item">Истекает позже</div>
+                </div>
+
+                <div id="color-sort-dropdown" class="dropdown-list dropdown-color">
+                    <div class="color-checkbox blue checked"><div class="check-icon"></div></div>
+                    <div class="color-checkbox green checked"><div class="check-icon"></div></div>
+                    <div class="color-checkbox red checked"><div class="check-icon"></div></div>
+                    <div class="color-checkbox pink"><div class="check-icon"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tasks-container">
+            <article class="task-card blue">
+                <div class="task-color-bar"></div>
+                <div class="task-content">
+                    <div class="task-text-group">
+                        <h2 class="task-card-title">Название первой задачи</h2>
+                        <p class="task-card-description">Описание задачи</p>
+                    </div>
+                    <div class="task-details-group">
+                        <div class="task-detail">
+                            <span class="task-detail-label">Истекает:</span>
+                            <span class="task-detail-value">16 июля 2023 года</span>
+                        </div>
+                        <div class="task-detail">
+                            <span class="task-detail-label">Ответственный:</span>
+                            <span class="task-detail-value">Островский Константин</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="task-card green">
+                <div class="task-color-bar"></div>
+                <div class="task-content">
+                    <div class="task-text-group">
+                        <h2 class="task-card-title">Название второй задачи</h2>
+                        <p class="task-card-description">Описание задачи</p>
+                    </div>
+                    <div class="task-details-group">
+                        <div class="task-detail">
+                            <span class="task-detail-label">Истекает:</span>
+                            <span class="task-detail-value">19 июля 2023 года</span>
+                        </div>
+                        <div class="task-detail">
+                            <span class="task-detail-label">Ответственный:</span>
+                            <span class="task-detail-value">Островский Константин</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="task-card red">
+                <div class="task-color-bar"></div>
+                <div class="task-content">
+                    <div class="task-text-group">
+                        <h2 class="task-card-title">Название третьей задачи</h2>
+                        <p class="task-card-description">Описание задачи</p>
+                    </div>
+                    <div class="task-details-group">
+                        <div class="task-detail">
+                            <span class="task-detail-label">Истекает:</span>
+                            <span class="task-detail-value">08 августа 2023 года</span>
+                        </div>
+                        <div class="task-detail">
+                            <span class="task-detail-label">Ответственный:</span>
+                            <span class="task-detail-value">Островский Константин</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="task-card pink">
+                <div class="task-color-bar"></div>
+                <div class="task-content">
+                    <div class="task-text-group">
+                        <h2 class="task-card-title">Название четвёртой задачи</h2>
+                        <p class="task-card-description">Описание задачи</p>
+                    </div>
+                    <div class="task-details-group">
+                        <div class="task-detail">
+                            <span class="task-detail-label">Истекает:</span>
+                            <span class="task-detail-value">19 декабря 2023 года</span>
+                        </div>
+                        <div class="task-detail">
+                            <span class="task-detail-label">Ответственный:</span>
+                            <span class="task-detail-value">Островский Константин</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+    
+    <footer class="page-footer">
+        <p class="copyright">© Вариант 11. Островский Константин, группа ИСПРВ-17-1</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortButton = document.getElementById('sort-button');
+            const colorSortButton = document.getElementById('color-sort-button');
+            const sortButtonLabel = document.getElementById('sort-button-label');
+            const sortDropdown = document.getElementById('sort-dropdown');
+            const colorSortDropdown = document.getElementById('color-sort-dropdown');
+            const sortOptions = document.querySelectorAll('.dropdown-sort-item');
+            const colorOptions = document.querySelectorAll('.color-checkbox');
+
+            sortButton.addEventListener('click', function(event) {
+                sortDropdown.classList.toggle('active');
+                colorSortDropdown.classList.remove('active');
+                event.stopPropagation();
+            });
+
+            colorSortButton.addEventListener('click', function(event) {
+                colorSortDropdown.classList.toggle('active');
+                sortDropdown.classList.remove('active');
+                event.stopPropagation();
+            });
+
+            sortOptions.forEach(option => {
+                option.addEventListener('click', function(event) {
+                    sortButtonLabel.textContent = this.textContent;
+                    sortOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    sortDropdown.classList.remove('active');
+                    event.stopPropagation();
+                });
+            });
+
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function(event) {
+                    this.classList.toggle('checked');
+                    event.stopPropagation();
+                });
+            });
+            
+            window.addEventListener('click', function() {
+                if (sortDropdown.classList.contains('active')) {
+                    sortDropdown.classList.remove('active');
+                }
+                if (colorSortDropdown.classList.contains('active')) {
+                    colorSortDropdown.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
