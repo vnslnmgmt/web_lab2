@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вариант 11</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* General Body Styles */
-        body {
-            position: relative;
-            width: 1920px;
-            height: 1080px;
-            background: #FFFFFF;
-            font-family: 'Inter', sans-serif;
+        /* --- Общие стили и структура макета --- */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             box-sizing: border-box;
         }
 
@@ -24,25 +30,19 @@
             box-sizing: border-box;
         }
 
-        /* Page Header */
+        /* --- Стили для Шапки (Header) --- */
         .page-header {
-            box-sizing: border-box;
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
             align-items: center;
             padding: 14px 160px;
-            position: absolute;
-            width: 1920px;
-            height: 72px;
-            left: 0;
-            top: 0;
+            width: 100%;
             border-bottom: 1px solid #EAECF0;
+            flex-shrink: 0;
         }
 
         .header-brand {
             display: flex;
-            flex-direction: row;
             align-items: center;
             gap: 16px;
         }
@@ -50,9 +50,6 @@
         .logo {
             width: 32px;
             height: 32px;
-            background-color: #0D1421;
-            -webkit-mask: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.0002 24.9429L19.5891 19.5891L24.9431 16L19.5891 12.4111L16.0002 7.05713L12.4112 12.4111L7.05725 16L12.4112 19.5891L16.0002 24.9429Z' fill='black'/%3E%3C/svg%3E") no-repeat center;
-            mask: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.0002 24.9429L19.5891 19.5891L24.9431 16L19.5891 12.4111L16.0002 7.05713L12.4112 12.4111L7.05725 16L12.4112 19.5891L16.0002 24.9429Z' fill='black'/%3E%3C/svg%3E") no-repeat center;
         }
 
         .brand-name {
@@ -67,16 +64,20 @@
             height: 24px;
             cursor: pointer;
             background-color: #0D1421;
-             -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
-            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
         }
 
-        /* Main Content */
-        .main-content {
-            position: absolute;
-            top: 104px;
-            left: 160px;
-            width: 1600px;
+        /* --- Стили для Основного контента (Main) --- */
+        main {
+            flex-grow: 1;
+            width: 100%;
+            padding: 40px 160px;
+        }
+
+        .main-container {
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
         .tasks-header {
@@ -84,6 +85,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
         }
         
         .filters {
@@ -101,10 +104,7 @@
         }
 
         .filter-button {
-            box-sizing: border-box;
             display: flex;
-            flex-direction: row;
-            justify-content: center;
             align-items: center;
             padding: 8px 16px;
             gap: 8px;
@@ -116,7 +116,6 @@
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 16px;
-            line-height: 24px;
             color: #354153;
         }
         
@@ -124,29 +123,57 @@
             width: 20px;
             height: 20px;
             background-color: #354153;
-            -webkit-mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='black' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
-            mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='black' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
         }
 
-        /* Tasks Container */
+        /* --- Стили для Контейнера с задачами и Карточек --- */
         .tasks-container {
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
+            max-width: 100%;
         }
         
-        /* Task Card */
         .task-card {
-            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             padding: 24px;
             gap: 24px;
-            width: 382px;
+            min-width: 320px;
+            max-width: 382px;
             height: 208px;
             background: #FFFFFF;
             border: 1px solid #EAECF0;
             border-radius: 8px;
+        }
+        
+        /* Для больших экранов - принудительно 4 карточки в ряд */
+        @media (min-width: 1600px) {
+            .tasks-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Для средних экранов - 3 карточки */
+        @media (min-width: 1200px) and (max-width: 1599px) {
+            .tasks-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Для планшетов - 2 карточки */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .tasks-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Для мобильных - 1 карточка */
+        @media (max-width: 767px) {
+            .tasks-container {
+                grid-template-columns: 1fr;
+            }
         }
         
         .task-color-bar {
@@ -166,7 +193,6 @@
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
-            overflow: hidden;
         }
 
         .task-text-group, .task-details-group {
@@ -193,16 +219,14 @@
         
         .task-detail {
             display: flex;
-            flex-direction: row;
             gap: 4px;
             font-size: 16px;
-            line-height: 24px;
         }
         
         .task-detail-label { color: #667085; }
         .task-detail-value { color: #0D1421; }
 
-        /* Dropdown Menus */
+        /* --- Стили для Выпадающих списков (Dropdown) --- */
         .dropdown-list {
             position: absolute;
             top: 48px;
@@ -232,12 +256,9 @@
             font-size: 16px;
             color: #354153;
             cursor: pointer;
-            width: 100%;
         }
 
-        .dropdown-sort-item.active, .dropdown-sort-item:hover {
-            background: #F2F4F7;
-        }
+        .dropdown-sort-item.active, .dropdown-sort-item:hover { background: #F2F4F7; }
 
         .dropdown-color {
             flex-direction: row;
@@ -268,19 +289,18 @@
             width: 24px;
             height: 24px;
             background-color: white;
-            -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
-            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
         }
         
         .color-checkbox.checked .check-icon { display: block; }
         
-        /* Footer */
+        /* --- Стили для Подвала (Footer) --- */
         .page-footer {
             padding: 24px 160px;
-            position: absolute;
-            width: 1920px;
-            left: 0;
-            bottom: 0;
+            width: 100%;
+            text-align: left;
+            flex-shrink: 0;
         }
 
         .copyright {
@@ -290,126 +310,140 @@
             color: #667085;
             margin: 0;
         }
+
+        /* --- Медиа-запрос для адаптивности --- */
+        @media (max-width: 1200px) {
+            .page-header, main, .page-footer {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header class="page-header">
         <div class="header-brand">
-            <div class="logo"></div>
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.2 0H12.8V8.27451L6.94904 2.42355L2.42355 6.94902L8.27453 12.8H0V19.2H8.27451L2.42355 25.0509L6.94904 29.5765L12.8 23.7254V32H19.2V23.7254L25.051 29.5765L29.5765 25.051L23.7254 19.2H32V12.8H23.7254L29.5765 6.94902L25.051 2.42354L19.2 8.27451V0Z" fill="#0D1421"/>
+                </svg>
+            </div>
             <div class="brand-name">Вариант 11</div>
         </div>
         <div class="user-icon"></div>
     </header>
 
-    <main class="main-content">
-        <div class="tasks-header">
-            <h1 class="tasks-title">Ваши задачи</h1>
-            <div class="filters">
-                <button id="sort-button" class="filter-button">
-                    <span id="sort-button-label">По умолчанию</span>
-                    <div class="chevron-down"></div>
-                </button>
-                <button id="color-sort-button" class="filter-button">
-                    <span>Сортировка по цвету</span>
-                    <div class="chevron-down"></div>
-                </button>
-                
-                <div id="sort-dropdown" class="dropdown-list dropdown-sort">
-                    <div class="dropdown-sort-item active">По умолчанию</div>
-                    <div class="dropdown-sort-item">Истекает раньше</div>
-                    <div class="dropdown-sort-item">Истекает позже</div>
-                </div>
+    <main>
+        <div class="main-container">
+            <div class="tasks-header">
+                <h1 class="tasks-title">Ваши задачи</h1>
+                <div class="filters">
+                    <button id="sort-button" class="filter-button">
+                        <span id="sort-button-label">По умолчанию</span>
+                        <div class="chevron-down"></div>
+                    </button>
+                    <button id="color-sort-button" class="filter-button">
+                        <span>Сортировка по цвету</span>
+                        <div class="chevron-down"></div>
+                    </button>
+                    
+                    <div id="sort-dropdown" class="dropdown-list dropdown-sort">
+                        <div class="dropdown-sort-item active">По умолчанию</div>
+                        <div class="dropdown-sort-item">Истекает раньше</div>
+                        <div class="dropdown-sort-item">Истекает позже</div>
+                    </div>
 
-                <div id="color-sort-dropdown" class="dropdown-list dropdown-color">
-                    <div class="color-checkbox blue checked"><div class="check-icon"></div></div>
-                    <div class="color-checkbox green checked"><div class="check-icon"></div></div>
-                    <div class="color-checkbox red checked"><div class="check-icon"></div></div>
-                    <div class="color-checkbox pink"><div class="check-icon"></div></div>
+                    <div id="color-sort-dropdown" class="dropdown-list dropdown-color">
+                        <div class="color-checkbox blue checked"><div class="check-icon"></div></div>
+                        <div class="color-checkbox green checked"><div class="check-icon"></div></div>
+                        <div class="color-checkbox red checked"><div class="check-icon"></div></div>
+                        <div class="color-checkbox pink"><div class="check-icon"></div></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="tasks-container">
-            <article class="task-card blue">
-                <div class="task-color-bar"></div>
-                <div class="task-content">
-                    <div class="task-text-group">
-                        <h2 class="task-card-title">Название первой задачи</h2>
-                        <p class="task-card-description">Описание задачи</p>
-                    </div>
-                    <div class="task-details-group">
-                        <div class="task-detail">
-                            <span class="task-detail-label">Истекает:</span>
-                            <span class="task-detail-value">16 июля 2023 года</span>
+            <div class="tasks-container">
+                <article class="task-card blue">
+                    <div class="task-color-bar"></div>
+                    <div class="task-content">
+                        <div class="task-text-group">
+                            <h2 class="task-card-title">Название первой задачи</h2>
+                            <p class="task-card-description">Описание задачи</p>
                         </div>
-                        <div class="task-detail">
-                            <span class="task-detail-label">Ответственный:</span>
-                            <span class="task-detail-value">Островский Константин</span>
+                        <div class="task-details-group">
+                            <div class="task-detail">
+                                <span class="task-detail-label">Истекает:</span>
+                                <span class="task-detail-value">16 июля 2023 года</span>
+                            </div>
+                            <div class="task-detail">
+                                <span class="task-detail-label">Ответственный:</span>
+                                <span class="task-detail-value">Островский Константин</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="task-card green">
-                <div class="task-color-bar"></div>
-                <div class="task-content">
-                    <div class="task-text-group">
-                        <h2 class="task-card-title">Название второй задачи</h2>
-                        <p class="task-card-description">Описание задачи</p>
-                    </div>
-                    <div class="task-details-group">
-                        <div class="task-detail">
-                            <span class="task-detail-label">Истекает:</span>
-                            <span class="task-detail-value">19 июля 2023 года</span>
+                <article class="task-card green">
+                    <div class="task-color-bar"></div>
+                    <div class="task-content">
+                        <div class="task-text-group">
+                            <h2 class="task-card-title">Название второй задачи</h2>
+                            <p class="task-card-description">Описание задачи</p>
                         </div>
-                        <div class="task-detail">
-                            <span class="task-detail-label">Ответственный:</span>
-                            <span class="task-detail-value">Островский Константин</span>
+                        <div class="task-details-group">
+                            <div class="task-detail">
+                                <span class="task-detail-label">Истекает:</span>
+                                <span class="task-detail-value">19 июля 2023 года</span>
+                            </div>
+                            <div class="task-detail">
+                                <span class="task-detail-label">Ответственный:</span>
+                                <span class="task-detail-value">Островский Константин</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="task-card red">
-                <div class="task-color-bar"></div>
-                <div class="task-content">
-                    <div class="task-text-group">
-                        <h2 class="task-card-title">Название третьей задачи</h2>
-                        <p class="task-card-description">Описание задачи</p>
-                    </div>
-                    <div class="task-details-group">
-                        <div class="task-detail">
-                            <span class="task-detail-label">Истекает:</span>
-                            <span class="task-detail-value">08 августа 2023 года</span>
+                <article class="task-card red">
+                    <div class="task-color-bar"></div>
+                    <div class="task-content">
+                        <div class="task-text-group">
+                            <h2 class="task-card-title">Название третьей задачи</h2>
+                            <p class="task-card-description">Описание задачи</p>
                         </div>
-                        <div class="task-detail">
-                            <span class="task-detail-label">Ответственный:</span>
-                            <span class="task-detail-value">Островский Константин</span>
+                        <div class="task-details-group">
+                            <div class="task-detail">
+                                <span class="task-detail-label">Истекает:</span>
+                                <span class="task-detail-value">08 августа 2023 года</span>
+                            </div>
+                            <div class="task-detail">
+                                <span class="task-detail-label">Ответственный:</span>
+                                <span class="task-detail-value">Островский Константин</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="task-card pink">
-                <div class="task-color-bar"></div>
-                <div class="task-content">
-                    <div class="task-text-group">
-                        <h2 class="task-card-title">Название четвёртой задачи</h2>
-                        <p class="task-card-description">Описание задачи</p>
-                    </div>
-                    <div class="task-details-group">
-                        <div class="task-detail">
-                            <span class="task-detail-label">Истекает:</span>
-                            <span class="task-detail-value">19 декабря 2023 года</span>
+                <article class="task-card pink">
+                    <div class="task-color-bar"></div>
+                    <div class="task-content">
+                        <div class="task-text-group">
+                            <h2 class="task-card-title">Название четвёртой задачи</h2>
+                            <p class="task-card-description">Описание задачи</p>
                         </div>
-                        <div class="task-detail">
-                            <span class="task-detail-label">Ответственный:</span>
-                            <span class="task-detail-value">Островский Константин</span>
+                        <div class="task-details-group">
+                            <div class="task-detail">
+                                <span class="task-detail-label">Истекает:</span>
+                                <span class="task-detail-value">19 декабря 2023 года</span>
+                            </div>
+                            <div class="task-detail">
+                                <span class="task-detail-label">Ответственный:</span>
+                                <span class="task-detail-value">Островский Константин</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </div>
         </div>
     </main>
     
